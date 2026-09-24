@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireX Launcher – Najlepszy launcher do Minecrafta</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0f0618;
+            --bg-card: #1a0b2e;
+            --purple-main: #9b30ff;
+            --purple-light: #c77dff;
+            --purple-dark: #5a189a;
+            --text-main: #f0e6ff;
+            --text-muted: #b8a0d0;
+            --accent: #ff4d9e;
+            --success: #00e676;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(155, 48, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 70%, rgba(90, 24, 154, 0.2) 0%, transparent 50%);
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+            background: rgba(15, 6, 24, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(155, 48, 255, 0.25);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-main);
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--purple-main), var(--accent));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.1rem;
+            color: white;
+            box-shadow: 0 0 20px rgba(155, 48, 255, 0.5);
+        }
+
+        .logo-text {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 0.95rem;
+            background: linear-gradient(90deg, var(--purple-light), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            margin-left: 1.8rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--purple-light);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 5rem 2rem 4rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #fff, var(--purple-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 680px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--purple-main), var(--purple-dark));
+            color: white;
+            font-weight: 700;
+            font-size: 1.15rem;
+            padding: 1rem 2.8rem;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 8px 30px rgba(155, 48, 255, 0.4);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(155, 48, 255, 0.6);
+            border-color: var(--purple-light);
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-main));
+        }
+
+        .version-badge {
+            display: inline-block;
+            margin-top: 1.2rem;
+            background: rgba(155, 48, 255, 0.15);
+            color: var(--purple-light);
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(155, 48, 255, 0.3);
+        }
+
+        /* ===== OPINIONS ===== */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .section-title {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            color: var(--purple-light);
+        }
+
+        .opinions {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .opinion-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(155, 48, 255, 0.25);
+            border-radius: 16px;
+            padding: 1.8rem;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .opinion-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(155, 48, 255, 0.2);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .opinion-card p {
+            color: var(--text-muted);
+            font-size: 0.98rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .author {
+            font-weight: 600;
+            color: var(--purple-light);
+            font-size: 0.9rem;
+        }
+
+        /* ===== OLD VERSIONS ===== */
+        .versions {
+            background: var(--bg-card);
+            border: 1px solid rgba(155, 48, 255, 0.25);
+            border-radius: 16px;
+            padding: 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .version-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(155, 48, 255, 0.15);
+        }
+
+        .version-item:last-child {
+            border-bottom: none;
+        }
+
+        .version-info strong {
+            display: block;
+            color: var(--text-main);
+        }
+
+        .version-info span {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        .btn-old {
+            background: transparent;
+            border: 1px solid var(--purple-main);
+            color: var(--purple-light);
+            padding: 0.45rem 1.2rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-old:hover {
+            background: var(--purple-main);
+            color: white;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(155, 48, 255, 0.15);
+            margin-top: 3rem;
+        }
+
+        footer a {
+            color: var(--purple-light);
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 700px) {
+            header {
+                padding: 1rem 1.2rem;
+            }
+            nav {
+                display: none;
+            }
+            .hero {
+                padding: 3.5rem 1.2rem 3rem;
+            }
+            .section {
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-icon">FX</div>
+            <div class="logo-text">FireX Launcher</div>
+        </a>
+        <nav>
+            <a href="#opinie">Opinie</a>
+            <a href="#wersje">Wersje</a>
+            <a href="" target="_blank">Oficjalna strona</a>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <h1>FireX Launcher</h1>
+        <p>
+            Szybki, lekki i pięknie wyglądający launcher do Minecrafta.  
+            Jednym kliknięciem uruchomisz grę, zarządzaj wersjami i ciesz się maksymalną wydajnością.
+        </p>
+        
+        <a href="https://emulate-12gb.gamer.gd/" target="_blank" class="btn-download">
+            Pobierz Launcher
+        </a>
+        
+        <div class="version-badge">
+            Najnowsza wersja: 2.4.1 • Windows / macOS / Linux
+        </div>
+    </section>
+
+    <!-- OPINIE -->
+    <section class="section" id="opinie">
+        <h2 class="section-title">Co mówią gracze</h2>
+        
+        <div class="opinions">
+            <div class="opinion-card">
+                <div class="stars">★★★★★</div>
+                <p>„good opti nice fps.”</p>
+                <div class="author">— X_kubxL</div>
+            </div>
+            
+            <div class="opinion-card">
+                <div class="stars">★★★★★</div>
+                <p>„THX brother.”</p>
+                <div class="author">— jono_DK</div>
+            </div>
+            
+            <div class="opinion-card">
+                <div class="stars">★★★★☆</div>
+                <p>„so good launcher neo thats fiiire.”</p>
+                <div class="author">— B4tr234_076</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STARSZE WERSJE -->
+    <section class="section" id="wersje">
+        <h2 class="section-title">Starsze wersje</h2>
+        
+        <div class="versions">
+            <div class="version-item">
+                <div class="version-info">
+                    <strong>FireX Launcher 2.3.0</strong>
+                    <span>Wydana 12 sierpnia 2025</span>
+                </div>
+                <a href="https://emulate-12gb.gamer.gd/" target="_blank" class="btn-old">Pobierz</a>
+            </div>
+            
+            <div class="version-item">
+                <div class="version-info">
+                    <strong>FireX Launcher 2.2.5</strong>
+                    <span>Wydana 3 czerwca 2025</span>
+                </div>
+                <a href="https://emulate-12gb.gamer.gd/" target="_blank" class="btn-old">Pobierz</a>
+            </div>
+            
+            <div class="version-item">
+                <div class="version-info">
+                    <strong>FireX Launcher 2.1.0</strong>
+                    <span>Wydana 19 marca 2025</span>
+                </div>
+                <a href="https://emulate-12gb.gamer.gd/" target="_blank" class="btn-old">Pobierz</a>
+            </div>
+            
+            <div class="version-item">
+                <div class="version-info">
+                    <strong>FireX Launcher 2.0.0</strong>
+                    <span>Wydana 8 stycznia 2025</span>
+                </div>
+                <a href="https://emulate-12gb.gamer.gd/" target="_blank" class="btn-old">Pobierz</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            FireX Launcher nie jest oficjalnym produktem Mojang Studios ani Microsoft.<br>
+            Wszystkie linki prowadzą do oficjalnej strony Minecrafta: 
+            <a href="https://emulate-12gb.gamer.gd/" target="_blank">minecraft.net</a>
+        </p>
+        <p style="margin-top: 0.8rem;">© 2025 FireX Launcher</p>
+    </footer>
+
+</body>
+</html>
